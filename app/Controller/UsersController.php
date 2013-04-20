@@ -438,4 +438,145 @@ class UsersController extends AppController {
 		$this->set(compact('user'));
 	}
 
+	/* ENCUESTA FUNCTIONS*/
+	public function quiz(){
+		
+
+		if (!empty($this->request->data)) {
+		debug($this->request->data); die;
+			$this->User->create();
+			$this->request->data['User']['activation_key'] = md5(uniqid());
+			if ($this->User->save($this->request->data)) {
+			###SAVE DATA
+			$this->request->data['User']['status'] = 0;
+			$this->request->data['User']['username'] = htmlspecialchars($this->request->data['User']['username']);
+			$this->request->data['User']['website'] = htmlspecialchars($this->request->data['User']['website']);
+			$this->request->data['User']['name'] = htmlspecialchars($this->request->data['User']['name']);
+			
+			$this->savePersonalInfo($this->User->id);
+
+
+			if ($this->User->save($this->request->data)) {
+				Croogo::dispatchEvent('Controller.Users.registrationSuccessful', $this);
+				$this->request->data['User']['password'] = null;
+				$this->Email->from = Configure::read('Site.title') . ' ' .
+					'<croogo@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>';
+				$this->Email->to = $this->request->data['User']['email'];
+				$this->Email->subject = __('[%s] Please activate your account', Configure::read('Site.title'));
+				$this->Email->template = 'register';
+				$this->set('user', $this->request->data);
+				$this->Email->send();
+
+				$this->Session->setFlash(__('You have successfully registered an account. An email has been sent with further instructions.'), 'default', array('class' => 'success'));
+				$this->redirect(array('action' => 'login'));
+			} else {
+				Croogo::dispatchEvent('Controller.Users.registrationFailure', $this);
+				$this->Session->setFlash(__('The User could not be saved. Please, try again.'), 'default', array('class' => 'error'));
+			}
+		
+
+
+
+			##END SAVE DATA		
+				$this->Session->setFlash(__('USUARIO CREADO'), 'default', array('class' => 'success'));
+				$this->redirect(array('action' => ''));
+			} else {
+				$this->Session->setFlash(__('NO SE PUDO GUARDAR EL USUARIO. INTENTE NUEVAMENTE.'), 'default', array('class' => 'error'));
+				unset($this->request->data['User']['password']);
+			}
+		} 
+		$roles = $this->User->Role->find('list', array('conditions' => array('NOT' => array('Role.id' => array(1, 2, 3)))));
+		$this->set(compact('roles'));
+		$this->set('deptoOptions',$this->getDepto());
+		$this->set('industryOptions',$this->getIndustry());
+		$this->set('academicLevelOptions',$this->getAcademicLevel());
+		$this->set('ocupationsOptions', $this->getOcupations());
+		$this->set('techCareersOptions', $this->getTechCareers()); 
+		$this->set('languagesOptions', $this->getLanguages());
+
+		
+	}
+
+	function savePersonalInfo($id){
+
+	}
+
+
+
+	function getDepto($country = null){
+		$query = "SELECT * FROM  location_depto";
+		$res1 = $this->User->query($query);
+		$res = array();
+		foreach ($res1 as $key => $value) {
+			$res[$value['location_depto']['id']] = $value['location_depto']['name']; 
+		}
+		
+		return 	$res;
+	}
+
+
+	function getIndustry(){
+		$query = "SELECT * FROM  industries";
+		$res1 = $this->User->query($query);
+		$res = array();
+
+		foreach ($res1 as $key => $value) {
+			$res[$value['industries']['id']] = $value['industries']['name']; 
+		}
+		
+		return 	$res;
+	}
+
+	function getAcademicLevel(){
+		$query = "SELECT * FROM  academic_level";
+		$res1 = $this->User->query($query);
+		$res = array();
+
+		foreach ($res1 as $key => $value) {
+			$res[$value['academic_level']['id']] = $value['academic_level']['name']; 
+		}
+		
+		return 	$res;
+	}
+
+	function getOcupations(){
+		$query = "SELECT * FROM  ocupations";
+		$res1 = $this->User->query($query);
+		$res = array();
+
+		foreach ($res1 as $key => $value) {
+			$res[$value['ocupations']['id']] = $value['ocupations']['name']; 
+		}
+		
+		return 	$res;
+	}
+
+
+	function getTechCareers(){
+		$query = "SELECT * FROM  tech_careers";
+		$res1 = $this->User->query($query);
+		$res = array();
+
+		foreach ($res1 as $key => $value) {
+			$res[$value['tech_careers']['id']] = $value['tech_careers']['name']; 
+		}
+		
+		return 	$res;	
+	}
+
+	function getLanguages(){
+		$query = "SELECT * FROM  world_languages";
+		$res1 = $this->User->query($query);
+		$res = array();
+
+		foreach ($res1 as $key => $value) {
+			$res[$value['world_languages']['id']] = $value['world_languages']['name']; 
+		}
+		
+		return 	$res;	
+	}
+
+
+
+
 }
