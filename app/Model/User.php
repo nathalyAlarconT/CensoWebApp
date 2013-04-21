@@ -1,6 +1,6 @@
 <?php
 
-App::uses('AuthComponent', 'Controller/Component');
+// App::uses('AuthComponent', 'Controller/Component');
 
 /**
  * User
@@ -52,7 +52,7 @@ class User extends AppModel {
  * @access public
  */
 	public $belongsTo = array('Role');
-
+   var $hasOne = array('Profile');
 /**
  * Validation
  *

@@ -37,7 +37,7 @@ class UsersController extends AppController {
  * @var array
  * @access public
  */
-	public $uses = array('User');
+	public $uses = array('User', 'Profile');
 
 /**
  * beforeFilter
@@ -427,6 +427,7 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
+	/*
 	public function view($username) {
 		$user = $this->User->findByUsername($username);
 		if (!isset($user['User']['id'])) {
@@ -437,28 +438,29 @@ class UsersController extends AppController {
 		$this->set('title_for_layout', $user['User']['name']);
 		$this->set(compact('user'));
 	}
-
+	*/ 
 	/* ENCUESTA FUNCTIONS*/
 	public function quiz(){
 		
+		
 
 		if (!empty($this->request->data)) {
-		debug($this->request->data); die;
+			debug($this->request->data); 
 			$this->User->create();
 			$this->request->data['User']['activation_key'] = md5(uniqid());
-			if ($this->User->save($this->request->data)) {
-			###SAVE DATA
-			$this->request->data['User']['status'] = 0;
-			$this->request->data['User']['username'] = htmlspecialchars($this->request->data['User']['username']);
-			$this->request->data['User']['website'] = htmlspecialchars($this->request->data['User']['website']);
-			$this->request->data['User']['name'] = htmlspecialchars($this->request->data['User']['name']);
-			
 			$this->savePersonalInfo($this->User->id);
+			$this->request->data['User']['username'] = htmlspecialchars($this->request->data['User']['username']);
+			$this->request->data['User']['status'] = 0;
 
 
-			if ($this->User->save($this->request->data)) {
-				Croogo::dispatchEvent('Controller.Users.registrationSuccessful', $this);
+			if ($this->User->saveAll($this->request->data)) {
+				
+				$data = $this->request->data;
+				$data['user_id'] = $this->User->id;
+				// $this->User->Profile->save($data);
+				
 				$this->request->data['User']['password'] = null;
+				/*
 				$this->Email->from = Configure::read('Site.title') . ' ' .
 					'<croogo@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>';
 				$this->Email->to = $this->request->data['User']['email'];
@@ -466,20 +468,9 @@ class UsersController extends AppController {
 				$this->Email->template = 'register';
 				$this->set('user', $this->request->data);
 				$this->Email->send();
-
-				$this->Session->setFlash(__('You have successfully registered an account. An email has been sent with further instructions.'), 'default', array('class' => 'success'));
+				*/
+				$this->Session->setFlash(__('Tus datos fueron registrados correctamente.'), 'default', array('class' => 'success'));
 				$this->redirect(array('action' => 'login'));
-			} else {
-				Croogo::dispatchEvent('Controller.Users.registrationFailure', $this);
-				$this->Session->setFlash(__('The User could not be saved. Please, try again.'), 'default', array('class' => 'error'));
-			}
-		
-
-
-
-			##END SAVE DATA		
-				$this->Session->setFlash(__('USUARIO CREADO'), 'default', array('class' => 'success'));
-				$this->redirect(array('action' => ''));
 			} else {
 				$this->Session->setFlash(__('NO SE PUDO GUARDAR EL USUARIO. INTENTE NUEVAMENTE.'), 'default', array('class' => 'error'));
 				unset($this->request->data['User']['password']);
@@ -497,8 +488,25 @@ class UsersController extends AppController {
 		
 	}
 
-	function savePersonalInfo($id){
-
+	public function view($id) {
+		$user = $this->User->findById($id);
+		debug($user);
+		if (!isset($user['User']['id'])) {
+			$this->Session->setFlash(__('Invalid User.'), 'default', array('class' => 'error'));
+			$this->redirect('/');
+		}
+				$roles = $this->User->Role->find('list', array('conditions' => array('NOT' => array('Role.id' => array(1, 2, 3)))));
+		$this->set(compact('roles'));
+		$this->set('deptoOptions',$this->getDepto());
+		$this->set('industryOptions',$this->getIndustry());
+		$this->set('academicLevelOptions',$this->getAcademicLevel());
+		$this->set('ocupationsOptions', $this->getOcupations());
+		$this->set('techCareersOptions', $this->getTechCareers()); 
+		$this->set('languagesOptions', $this->getLanguages());
+	
+		$this->set('title_for_layout', $user['User']['name']);
+		$this->set(compact('user'));
+		$this->set('editFields', $this->User->editFields());
 	}
 
 
