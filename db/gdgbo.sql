@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-04-2013 a las 03:56:18
+-- Tiempo de generación: 22-04-2013 a las 03:24:51
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -58,14 +58,14 @@ CREATE TABLE IF NOT EXISTS `acos` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=189 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=190 ;
 
 --
 -- Volcado de datos para la tabla `acos`
 --
 
 INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
-(1, NULL, '', NULL, 'controllers', 1, 372),
+(1, NULL, '', NULL, 'controllers', 1, 374),
 (2, 1, '', NULL, 'Attachments', 2, 13),
 (3, 2, '', NULL, 'admin_index', 3, 4),
 (4, 2, '', NULL, 'admin_add', 5, 6),
@@ -179,7 +179,7 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (112, 110, '', NULL, 'admin_add', 221, 222),
 (113, 110, '', NULL, 'admin_edit', 223, 224),
 (114, 110, '', NULL, 'admin_delete', 225, 226),
-(115, 1, '', NULL, 'Users', 228, 275),
+(115, 1, '', NULL, 'Users', 228, 277),
 (116, 115, '', NULL, 'admin_index', 229, 230),
 (117, 115, '', NULL, 'admin_add', 231, 232),
 (118, 115, '', NULL, 'admin_edit', 233, 234),
@@ -196,51 +196,51 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (129, 115, '', NULL, 'login', 255, 256),
 (130, 115, '', NULL, 'logout', 257, 258),
 (131, 115, '', NULL, 'view', 259, 260),
-(132, 1, '', NULL, 'Vocabularies', 276, 289),
-(133, 132, '', NULL, 'admin_index', 277, 278),
-(134, 132, '', NULL, 'admin_add', 279, 280),
-(135, 132, '', NULL, 'admin_edit', 281, 282),
-(136, 132, '', NULL, 'admin_delete', 283, 284),
-(137, 1, '', NULL, 'AclAcos', 290, 299),
-(138, 137, '', NULL, 'admin_index', 291, 292),
-(139, 137, '', NULL, 'admin_add', 293, 294),
-(140, 137, '', NULL, 'admin_edit', 295, 296),
-(141, 137, '', NULL, 'admin_delete', 297, 298),
-(142, 1, '', NULL, 'AclActions', 300, 313),
-(143, 142, '', NULL, 'admin_index', 301, 302),
-(144, 142, '', NULL, 'admin_add', 303, 304),
-(145, 142, '', NULL, 'admin_edit', 305, 306),
-(146, 142, '', NULL, 'admin_delete', 307, 308),
-(147, 142, '', NULL, 'admin_move', 309, 310),
-(148, 142, '', NULL, 'admin_generate', 311, 312),
-(149, 1, '', NULL, 'AclAros', 314, 323),
-(150, 149, '', NULL, 'admin_index', 315, 316),
-(151, 149, '', NULL, 'admin_add', 317, 318),
-(152, 149, '', NULL, 'admin_edit', 319, 320),
-(153, 149, '', NULL, 'admin_delete', 321, 322),
-(154, 1, '', NULL, 'AclPermissions', 324, 329),
-(155, 154, '', NULL, 'admin_index', 325, 326),
-(156, 154, '', NULL, 'admin_toggle', 327, 328),
-(159, 1, '', NULL, 'ExtensionsHooks', 330, 335),
-(160, 159, '', NULL, 'admin_index', 331, 332),
-(161, 159, '', NULL, 'admin_toggle', 333, 334),
-(162, 1, '', NULL, 'ExtensionsLocales', 336, 347),
-(163, 162, '', NULL, 'admin_index', 337, 338),
-(164, 162, '', NULL, 'admin_activate', 339, 340),
-(165, 162, '', NULL, 'admin_add', 341, 342),
-(166, 162, '', NULL, 'admin_edit', 343, 344),
-(167, 162, '', NULL, 'admin_delete', 345, 346),
-(168, 1, '', NULL, 'ExtensionsPlugins', 348, 357),
-(169, 168, '', NULL, 'admin_index', 349, 350),
-(170, 168, '', NULL, 'admin_add', 351, 352),
-(171, 168, '', NULL, 'admin_delete', 353, 354),
-(172, 1, '', NULL, 'ExtensionsThemes', 358, 371),
-(173, 172, '', NULL, 'admin_index', 359, 360),
-(174, 172, '', NULL, 'admin_activate', 361, 362),
-(175, 172, '', NULL, 'admin_add', 363, 364),
-(176, 172, '', NULL, 'admin_editor', 365, 366),
-(177, 172, '', NULL, 'admin_save', 367, 368),
-(178, 172, '', NULL, 'admin_delete', 369, 370),
+(132, 1, '', NULL, 'Vocabularies', 278, 291),
+(133, 132, '', NULL, 'admin_index', 279, 280),
+(134, 132, '', NULL, 'admin_add', 281, 282),
+(135, 132, '', NULL, 'admin_edit', 283, 284),
+(136, 132, '', NULL, 'admin_delete', 285, 286),
+(137, 1, '', NULL, 'AclAcos', 292, 301),
+(138, 137, '', NULL, 'admin_index', 293, 294),
+(139, 137, '', NULL, 'admin_add', 295, 296),
+(140, 137, '', NULL, 'admin_edit', 297, 298),
+(141, 137, '', NULL, 'admin_delete', 299, 300),
+(142, 1, '', NULL, 'AclActions', 302, 315),
+(143, 142, '', NULL, 'admin_index', 303, 304),
+(144, 142, '', NULL, 'admin_add', 305, 306),
+(145, 142, '', NULL, 'admin_edit', 307, 308),
+(146, 142, '', NULL, 'admin_delete', 309, 310),
+(147, 142, '', NULL, 'admin_move', 311, 312),
+(148, 142, '', NULL, 'admin_generate', 313, 314),
+(149, 1, '', NULL, 'AclAros', 316, 325),
+(150, 149, '', NULL, 'admin_index', 317, 318),
+(151, 149, '', NULL, 'admin_add', 319, 320),
+(152, 149, '', NULL, 'admin_edit', 321, 322),
+(153, 149, '', NULL, 'admin_delete', 323, 324),
+(154, 1, '', NULL, 'AclPermissions', 326, 331),
+(155, 154, '', NULL, 'admin_index', 327, 328),
+(156, 154, '', NULL, 'admin_toggle', 329, 330),
+(159, 1, '', NULL, 'ExtensionsHooks', 332, 337),
+(160, 159, '', NULL, 'admin_index', 333, 334),
+(161, 159, '', NULL, 'admin_toggle', 335, 336),
+(162, 1, '', NULL, 'ExtensionsLocales', 338, 349),
+(163, 162, '', NULL, 'admin_index', 339, 340),
+(164, 162, '', NULL, 'admin_activate', 341, 342),
+(165, 162, '', NULL, 'admin_add', 343, 344),
+(166, 162, '', NULL, 'admin_edit', 345, 346),
+(167, 162, '', NULL, 'admin_delete', 347, 348),
+(168, 1, '', NULL, 'ExtensionsPlugins', 350, 359),
+(169, 168, '', NULL, 'admin_index', 351, 352),
+(170, 168, '', NULL, 'admin_add', 353, 354),
+(171, 168, '', NULL, 'admin_delete', 355, 356),
+(172, 1, '', NULL, 'ExtensionsThemes', 360, 373),
+(173, 172, '', NULL, 'admin_index', 361, 362),
+(174, 172, '', NULL, 'admin_activate', 363, 364),
+(175, 172, '', NULL, 'admin_add', 365, 366),
+(176, 172, '', NULL, 'admin_editor', 367, 368),
+(177, 172, '', NULL, 'admin_save', 369, 370),
+(178, 172, '', NULL, 'admin_delete', 371, 372),
 (179, 115, NULL, NULL, 'quiz', 261, 262),
 (180, 115, NULL, NULL, 'getDepto', 263, 264),
 (181, 115, NULL, NULL, 'getIndustry', 265, 266),
@@ -248,9 +248,10 @@ INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (183, 115, NULL, NULL, 'getOcupations', 269, 270),
 (184, 115, NULL, NULL, 'getTechCareers', 271, 272),
 (185, 115, NULL, NULL, 'getLanguages', 273, 274),
-(186, 132, NULL, NULL, 'admin_moveup', 285, 286),
-(187, 132, NULL, NULL, 'admin_movedown', 287, 288),
-(188, 168, NULL, NULL, 'admin_toggle', 355, 356);
+(186, 132, NULL, NULL, 'admin_moveup', 287, 288),
+(187, 132, NULL, NULL, 'admin_movedown', 289, 290),
+(188, 168, NULL, NULL, 'admin_toggle', 357, 358),
+(189, 115, NULL, NULL, 'getTechnologies', 275, 276);
 
 -- --------------------------------------------------------
 
@@ -267,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `aros` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=77 ;
 
 --
 -- Volcado de datos para la tabla `aros`
@@ -306,7 +307,50 @@ INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `
 (30, NULL, 'User', 27, NULL, 59, 60),
 (31, NULL, 'User', 28, NULL, 61, 62),
 (32, NULL, 'User', 29, NULL, 63, 64),
-(33, NULL, 'User', 30, NULL, 65, 66);
+(33, NULL, 'User', 30, NULL, 65, 66),
+(34, NULL, 'User', 31, NULL, 67, 68),
+(35, NULL, 'User', 32, NULL, 69, 70),
+(36, NULL, 'User', 33, NULL, 71, 72),
+(37, NULL, 'User', 34, NULL, 73, 74),
+(38, NULL, 'User', 35, NULL, 75, 76),
+(39, NULL, 'User', 36, NULL, 77, 78),
+(40, NULL, 'User', 37, NULL, 79, 80),
+(41, NULL, 'User', 38, NULL, 81, 82),
+(42, NULL, 'User', 39, NULL, 83, 84),
+(43, NULL, 'User', 40, NULL, 85, 86),
+(44, NULL, 'User', 41, NULL, 87, 88),
+(45, NULL, 'User', 42, NULL, 89, 90),
+(46, NULL, 'User', 43, NULL, 91, 92),
+(47, NULL, 'User', 44, NULL, 93, 94),
+(48, NULL, 'User', 45, NULL, 95, 96),
+(49, NULL, 'User', 46, NULL, 97, 98),
+(50, NULL, 'User', 47, NULL, 99, 100),
+(51, NULL, 'User', 48, NULL, 101, 102),
+(52, NULL, 'User', 49, NULL, 103, 104),
+(53, NULL, 'User', 50, NULL, 105, 106),
+(54, NULL, 'User', 51, NULL, 107, 108),
+(55, NULL, 'User', 52, NULL, 109, 110),
+(56, NULL, 'User', 53, NULL, 111, 112),
+(57, NULL, 'User', 54, NULL, 113, 114),
+(58, NULL, 'User', 55, NULL, 115, 116),
+(59, NULL, 'User', 56, NULL, 117, 118),
+(60, NULL, 'User', 57, NULL, 119, 120),
+(61, NULL, 'User', 58, NULL, 121, 122),
+(62, NULL, 'User', 59, NULL, 123, 124),
+(63, NULL, 'User', 60, NULL, 125, 126),
+(64, NULL, 'User', 61, NULL, 127, 128),
+(65, NULL, 'User', 62, NULL, 129, 130),
+(66, NULL, 'User', 63, NULL, 131, 132),
+(67, NULL, 'User', 64, NULL, 133, 134),
+(68, NULL, 'User', 65, NULL, 135, 136),
+(69, NULL, 'User', 66, NULL, 137, 138),
+(70, NULL, 'User', 67, NULL, 139, 140),
+(71, NULL, 'User', 68, NULL, 141, 142),
+(72, NULL, 'User', 69, NULL, 143, 144),
+(73, NULL, 'User', 70, NULL, 145, 146),
+(74, NULL, 'User', 71, NULL, 147, 148),
+(75, NULL, 'User', 72, NULL, 149, 150),
+(76, NULL, 'User', 73, NULL, 151, 152);
 
 -- --------------------------------------------------------
 
@@ -323,7 +367,7 @@ CREATE TABLE IF NOT EXISTS `aros_acos` (
   `_update` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `_delete` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=42 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=44 ;
 
 --
 -- Volcado de datos para la tabla `aros_acos`
@@ -370,7 +414,9 @@ INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`
 (38, 3, 182, '1', '1', '1', '1'),
 (39, 3, 181, '1', '1', '1', '1'),
 (40, 3, 180, '1', '1', '1', '1'),
-(41, 3, 179, '1', '1', '1', '1');
+(41, 3, 179, '1', '1', '1', '1'),
+(42, 2, 189, '1', '1', '1', '1'),
+(43, 3, 189, '1', '1', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -486,6 +532,21 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 
 INSERT INTO `contacts` (`id`, `title`, `alias`, `body`, `name`, `position`, `address`, `address2`, `state`, `country`, `postcode`, `phone`, `fax`, `email`, `message_status`, `message_archive`, `message_count`, `message_spam_protection`, `message_captcha`, `message_notify`, `status`, `updated`, `created`) VALUES
 (1, 'Contact', 'contact', '', '', '', '', '', '', '', '', '', '', 'you@your-site.com', 1, 0, 0, 0, 0, 1, 1, '2009-10-07 22:07:49', '2009-09-16 01:45:17');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `educations`
+--
+
+CREATE TABLE IF NOT EXISTS `educations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `school` varchar(45) DEFAULT NULL,
+  `start_date` varchar(45) DEFAULT NULL,
+  `end_date` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -700,6 +761,19 @@ INSERT INTO `languages` (`id`, `title`, `native`, `alias`, `status`, `weight`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `language_users`
+--
+
+CREATE TABLE IF NOT EXISTS `language_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `links`
 --
 
@@ -730,14 +804,14 @@ CREATE TABLE IF NOT EXISTS `links` (
 INSERT INTO `links` (`id`, `parent_id`, `menu_id`, `title`, `class`, `description`, `link`, `target`, `rel`, `status`, `lft`, `rght`, `visibility_roles`, `params`, `updated`, `created`) VALUES
 (5, NULL, 4, 'About', 'about', '', 'controller:nodes/action:view/type:page/slug:about', '', '', 1, 3, 4, '', '', '2009-10-06 23:14:21', '2009-08-19 12:23:33'),
 (6, NULL, 4, 'Contact', 'contact', '', 'controller:contacts/action:view/contact', '', '', 1, 5, 6, '', '', '2009-10-06 23:14:45', '2009-08-19 12:34:56'),
-(7, NULL, 3, 'Home', 'home', '', '/', '', '', 1, 5, 6, '', '', '2009-10-06 21:17:06', '2009-09-06 21:32:54'),
-(8, NULL, 3, 'About', 'about', '', '/about', '', '', 1, 7, 10, '', '', '2009-09-12 03:45:53', '2009-09-06 21:34:57'),
+(7, NULL, 3, 'Home', 'home', '', '/', '', '', 0, 5, 6, '', '', '2009-10-06 21:17:06', '2009-09-06 21:32:54'),
+(8, NULL, 3, 'About', 'about', '', '/about', '', '', 0, 7, 10, '', '', '2009-09-12 03:45:53', '2009-09-06 21:34:57'),
 (9, 8, 3, 'Child link', 'child-link', '', '#', '', '', 0, 8, 9, '', '', '2009-10-06 23:13:06', '2009-09-12 03:52:23'),
 (10, NULL, 5, 'Site Admin', 'site-admin', '', '/admin', '', '', 1, 1, 2, '', '', '2009-09-12 06:34:09', '2009-09-12 06:34:09'),
 (11, NULL, 5, 'Log out', 'log-out', '', '/users/logout', '', '', 1, 7, 8, '["1","2"]', '', '2009-09-12 06:35:22', '2009-09-12 06:34:41'),
 (12, NULL, 6, 'Croogo', 'croogo', '', 'http://www.croogo.org', '', '', 1, 3, 4, '', '', '2009-09-12 23:31:59', '2009-09-12 23:31:59'),
 (14, NULL, 6, 'CakePHP', 'cakephp', '', 'http://www.cakephp.org', '', '', 1, 1, 2, '', '', '2009-10-07 03:25:25', '2009-09-12 23:38:43'),
-(15, NULL, 3, 'Contact', 'contact', '', '/controller:contacts/action:view/contact', '', '', 1, 11, 12, '', '', '2009-09-16 07:54:13', '2009-09-16 07:53:33'),
+(15, NULL, 3, 'Contact', 'contact', '', '/controller:contacts/action:view/contact', '', '', 0, 11, 12, '', '', '2009-09-16 07:54:13', '2009-09-16 07:53:33'),
 (16, NULL, 5, 'Entries (RSS)', 'entries-rss', '', '/nodes/promoted.rss', '', '', 1, 3, 4, '', '', '2009-10-27 17:46:22', '2009-10-27 17:46:22'),
 (17, NULL, 5, 'Comments (RSS)', 'comments-rss', '', '/comments.rss', '', '', 1, 5, 6, '', '', '2009-10-27 17:46:54', '2009-10-27 17:46:54');
 
@@ -843,9 +917,7 @@ CREATE TABLE IF NOT EXISTS `meta` (
 --
 
 INSERT INTO `meta` (`id`, `model`, `foreign_key`, `key`, `value`, `weight`) VALUES
-(1, 'Node', 1, 'meta_keywords', 'key1, key2', NULL),
-(2, 'Node', 3, 'userName', 'Nombre', NULL),
-(3, 'Node', 3, 'userLastName', 'Apellido', NULL);
+(1, 'Node', 1, 'meta_keywords', 'key1, key2', NULL);
 
 -- --------------------------------------------------------
 
@@ -884,8 +956,7 @@ CREATE TABLE IF NOT EXISTS `nodes` (
 
 INSERT INTO `nodes` (`id`, `parent_id`, `user_id`, `title`, `slug`, `body`, `excerpt`, `status`, `mime_type`, `comment_status`, `comment_count`, `promote`, `path`, `terms`, `sticky`, `lft`, `rght`, `visibility_roles`, `type`, `updated`, `created`) VALUES
 (1, NULL, 1, 'Hello World', 'hello-world', '<p>Welcome to Croogo. This is your first post. You can edit or delete it from the admin panel.</p>', '', 1, '', 2, 1, 1, '/blog/hello-world', '{"1":"uncategorized"}', 0, 1, 2, '', 'blog', '2009-12-25 11:00:00', '2009-12-25 11:00:00'),
-(2, NULL, 1, 'About', 'about', '<p>This is an example of a Croogo page, you could edit this to put information about yourself or your site.</p>', '', 1, '', 0, 0, 0, '/about', '', 0, 1, 2, '', 'page', '2009-12-25 22:00:00', '2009-12-25 22:00:00'),
-(3, NULL, 1, 'Encuesta', 'encuesta', '<p>lalalalalalalal</p>', '', 1, NULL, 1, 0, 1, '/page/encuesta', NULL, 0, 3, 4, '', 'page', '2013-04-20 17:09:49', '2013-04-20 17:06:00');
+(2, NULL, 1, 'About', 'about', '<p>This is an example of a Croogo page, you could edit this to put information about yourself or your site.</p>', '', 1, '', 0, 0, 0, '/about', '', 0, 1, 2, '', 'page', '2009-12-25 22:00:00', '2009-12-25 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -954,26 +1025,27 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `facebook_account` varchar(255) DEFAULT NULL,
   `google_account` varchar(255) DEFAULT NULL,
   `linkedin_account` varchar(255) DEFAULT NULL,
-  `skype_account` varchar(255) NOT NULL,
+  `skype_account` varchar(255) DEFAULT NULL,
   `years_experience` varchar(255) DEFAULT NULL,
   `have_kids` int(11) DEFAULT NULL,
   `work_life_balance` varchar(255) DEFAULT NULL,
   `greatest_challenge` varchar(255) DEFAULT NULL,
   `woman_barriers` int(11) DEFAULT NULL,
-  `persue_career` text NOT NULL,
-  `future_career` text NOT NULL,
-  `stay_current` text NOT NULL,
-  `interests` int(11) NOT NULL,
-  `bolivian_limits` text NOT NULL,
-  `training_days` varchar(255) NOT NULL,
-  `training_frequency` varchar(255) NOT NULL,
-  `training_time` varchar(255) NOT NULL,
+  `current_career` varchar(255) DEFAULT NULL,
+  `pursue_career` varchar(255) DEFAULT NULL,
+  `future_career` varchar(255) DEFAULT NULL,
+  `stay_current` text,
+  `interests` int(11) DEFAULT NULL,
+  `bolivian_limits` text,
+  `training_days` varchar(255) DEFAULT NULL,
+  `training_frequency` varchar(255) DEFAULT NULL,
+  `training_time` varchar(255) DEFAULT NULL,
   `location_country_id` varchar(100) DEFAULT NULL,
   `location_depto_id` varchar(100) DEFAULT NULL,
   `location_city_id` varchar(100) DEFAULT NULL,
-  `industry_id` int(11) NOT NULL,
+  `industry_id` int(11) DEFAULT NULL,
   `education_id` int(11) DEFAULT NULL,
-  `ocupation_id` int(11) NOT NULL,
+  `ocupation_id` int(11) DEFAULT NULL,
   `academic_level_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1118,6 +1190,39 @@ INSERT INTO `taxonomies` (`id`, `parent_id`, `term_id`, `vocabulary_id`, `lft`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `technologies`
+--
+
+CREATE TABLE IF NOT EXISTS `technologies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `technologies`
+--
+
+INSERT INTO `technologies` (`id`, `name`) VALUES
+(1, 'Google Maps'),
+(2, 'Apps Engine');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `technology_users`
+--
+
+CREATE TABLE IF NOT EXISTS `technology_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `technology_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tech_careers`
 --
 
@@ -1251,14 +1356,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated` datetime NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=74 ;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `role_id`, `username`, `password`, `name`, `email`, `website`, `activation_key`, `image`, `bio`, `timezone`, `status`, `updated`, `created`) VALUES
-(1, 1, 'admin', '02c4c6f7069992e5f0d43af5cabe67e83e30e214', 'admin', '', NULL, 'f62204c11fb68741ab2224d7edf4c7c5', NULL, NULL, '0', 1, '2013-04-20 16:46:40', '2013-04-20 16:46:40');
+(1, 1, 'admin', '02c4c6f7069992e5f0d43af5cabe67e83e30e214', 'admin', '', NULL, 'f62204c11fb68741ab2224d7edf4c7c5', NULL, NULL, '0', 1, '2013-04-20 16:46:40', '2013-04-20 16:46:40'),
+(60, 0, '', '', '', 'enat87aaa@gmail.com', NULL, '5f9d7c89af0c9fca575a7cd87ad91944', NULL, NULL, '0', 0, '2013-04-22 01:31:49', '2013-04-22 01:31:49'),
+(61, 0, '', '', '', 'sdfasdsss@gmail.com', NULL, '3ae19e2acef65f8df4bc96bfefe7430b', NULL, NULL, '0', 0, '2013-04-22 01:38:53', '2013-04-22 01:38:53'),
+(62, 0, '', '', '', 'enat87A2@gmail.com', NULL, '28ecfcc018bfda52e8310c01adaf3b45', NULL, NULL, '0', 0, '2013-04-22 01:39:56', '2013-04-22 01:39:56'),
+(63, 0, '', '', '', 'aweqa@gmail.com', NULL, '6188afad05e046b943fb94b25bf1fbd8', NULL, NULL, '0', 0, '2013-04-22 01:40:39', '2013-04-22 01:40:39'),
+(64, 0, '', '', '', 'aweaaqa@gmail.com', NULL, '43f789727de4e483c848b16812f35345', NULL, NULL, '0', 0, '2013-04-22 01:42:49', '2013-04-22 01:42:49'),
+(65, 0, '', '', '', 'enat8aa72@gmail.com', NULL, 'bcf2ab9925e67927ee772a86f8f37a72', NULL, NULL, '0', 0, '2013-04-22 01:44:47', '2013-04-22 01:44:47'),
+(66, 0, '', '', '', 'enat8aaaaaa72@gmail.com', NULL, 'ccf5025ee0c538804eaf711bcf02865c', NULL, NULL, '0', 0, '2013-04-22 01:57:27', '2013-04-22 01:57:27'),
+(67, 0, '', '', '', 'enataaaaa87@gmail.com', NULL, 'e034cb2c8fd1cd574067d1242902431e', NULL, NULL, '0', 0, '2013-04-22 02:00:10', '2013-04-22 02:00:10'),
+(68, 0, '', '', '', 'enat8sss72@gmail.com', NULL, '50c4cd301323fc7498ceae6b254d36fe', NULL, NULL, '0', 0, '2013-04-22 02:06:17', '2013-04-22 02:06:17'),
+(69, 0, '', '', '', 'enaaaaaaaat872@gmail.com', NULL, '5b3b1f692f527e0d9569c711c3454668', NULL, NULL, '0', 0, '2013-04-22 02:09:46', '2013-04-22 02:09:46'),
+(70, 0, '', '', '', '466ssssssss@dasd.com', NULL, '0c2d462cb0c7bb7918d688258c87c48c', NULL, NULL, '0', 0, '2013-04-22 02:14:23', '2013-04-22 02:14:23'),
+(71, 0, '', '', '', 'asdssssssf@fdasfasf.com', NULL, 'af475edd73a2669614c1fb9669d43465', NULL, NULL, '0', 0, '2013-04-22 02:32:30', '2013-04-22 02:32:30'),
+(72, 0, '', '', '', 'asdsadsssss@dafadsf.com', NULL, 'd67f48e9e0d76fc5e967cbf7ef3f3a50', NULL, NULL, '0', 0, '2013-04-22 02:40:28', '2013-04-22 02:40:28'),
+(73, 0, '', '', '', 'enat87777777@gmail.com', NULL, 'e19c4dfc9ee36bff2a4e2145306ea336', NULL, NULL, '0', 0, '2013-04-22 03:21:00', '2013-04-22 03:21:00');
 
 -- --------------------------------------------------------
 
