@@ -1,4 +1,6 @@
-<?php $this->extend('/Common/admin_edit'); ?>
+<?php $this->extend('/Common/admin_edit'); 
+// $this->layout = 'ajax'
+?>
 <?php echo $this->Form->create('User');
 $username = ''; $password=''; 
 ?>
@@ -10,7 +12,7 @@ $username = ''; $password='';
 		<div id="user-main">
 		<?php
 			echo "<hr><h3>ACERCA DE MI</h3>";
-			echo $this->Form->input('username', array('label' => 'Username')); 
+			// echo $this->Form->input('username', array('label' => 'Username')); 
 			echo $this->Form->input('Profile.first_name', array('label' => 'Nombre'));
 			echo $this->Form->input('Profile.last_name', array('label' => 'Apellido'));
 			
@@ -39,26 +41,57 @@ $username = ''; $password='';
 			echo $this->Form->label('Tu Nivel Académico');
 			echo $this->Form->select('Profile.academic_level_id', $academicLevelOptions);
 			echo $this->Form->input('Profile.website_url', array('Mi portfolio (url)'));
-			// echo $this->Form->input('education_id', array('label' => 'Mi formación académica - ***ADICIONAR GRID***'));  
+			
+			echo $this->Form->label('Mi formación académica');
+			?>
+			<table border='1'> 
+			<tr> <th>Intitución</th><th>Desde</th><th>Hasta</th>  </tr>
+				<tr>
+					<td>
+			<?php echo $this->Form->input('Education.0.school', array('label' => ''));
+		    ?>
+					</td> <td>
+		    <?php  
+			echo $this->Form->date('Education.0.start_date', array('label' => ''));
+			 ?>
+					</td> <td>
+		    <?php  
+			echo $this->Form->date('Education.0.end_date', array('label' => ''));
+			 ?>
+					</td></tr><tr> <td>
+		    <?php  
+			echo $this->Form->input('Education.1.school', array('label' => ''));  
+			 ?>
+					</td> <td>
+		    <?php  
+			echo $this->Form->date('Education.1.start_date', array('label' => ''));
+			 ?>
+					</td> <td>
+		    <?php  
+			echo $this->Form->date('Education.1.end_date', array('label' => 'Hasa'));
+ 			?>
+					</td> </tr> </table>
+		    <?php  
+
 			echo $this->Form->input('Profile.years_experience', array('label' => 'Años de experiencia'));
 			echo $this->Form->label('A que te dedicas');	
 
-			// echo $this->Form->select('Profile.ocupation_id', $ocupationsOptions, array('multiple' => true));
+			echo $this->Form->select('Profile.ocupation_id', $ocupationsOptions);
 
 		    echo $this->Form->input('Profile.company', array('label' => 'Mi trabajo actual'));
 
 
 		    echo $this->Form->label('Te desempeñas como');	
-			// echo $this->Form->select('career', $techCareersOptions, array('multiple' => true));
+			echo $this->Form->select('Profile.current_career', $techCareersOptions);//, array('multiple' => true));
 			
 			echo $this->Form->label('Idiomas');	
 			
-			// echo $this->Form->select('Profile.languages', $languagesOptions, array('multiple' => true));
+			echo $this->Form->select('UserWorldLanguages.language_id', $languagesOptions, array('multiple' => 'checkbox'));
 			
 			echo $this->Form->label('Quisiera desempeñarme como');	
-			// echo $this->Form->select('Profile.future_career', $techCareersOptions, array('multiple' => true));
-			echo $this->Form->input('Profile.interests', array('label' => 'Qué tecnologías te interesan'));
+			echo $this->Form->select('Profile.future_career', $techCareersOptions2); 
 			
+
 			echo "<hr><h3>Mi opinion como Mujer en tech</h3>";	
 			
 			echo $this->Form->radio('Profile.have_kids', array('1' => 'Si', '0' => 'No'), array('legend' => 'Tienes hijos?', 'separator' => '<br> '));
@@ -77,6 +110,8 @@ $username = ''; $password='';
 			
 			echo "<hr><h3>Capacitación</h3>";
 				// si pudieras tomar un curso de capacitacion q tipo de cursos te interesaria mas?
+			echo $this->Form->label('Qué tecnologías quisieras aprender?');	
+			echo $this->Form->select('TechnologyUsers.technology_id', $technologiesOptions, array('multiple' => 'checkbox'));
 			echo $this->Form->label('Que dias preferirias tomar el curso?');
 			echo $this->Form->select('Profile.training_days', array('lun-vie' => 'Días Laborales', 'sab-dom' => 'Fines de Semana'));	
 			echo $this->Form->label('Con qué frecuencia?');

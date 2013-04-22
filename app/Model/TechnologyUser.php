@@ -11,7 +11,7 @@
  * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
  * @link     http://www.croogo.org
  */
-class Profile extends AppModel {
+class TechnologyUser extends AppModel {
 
 /**
  * Model name
@@ -19,7 +19,7 @@ class Profile extends AppModel {
  * @var string
  * @access public
  */
-	public $name = 'Profile';
+	public $name = 'TechnologyUser';
 
 /**
  * Behaviors used by the Model
@@ -47,6 +47,9 @@ class Profile extends AppModel {
  * @var array
  * @access public
  */
-	public $belongsTo = 'User';
-
+	// public $belongsTo = 'User';
+  public $belongsTo = array(
+        'User', 'Technology'
+    );
+    
 }

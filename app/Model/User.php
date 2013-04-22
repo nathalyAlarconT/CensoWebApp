@@ -52,7 +52,29 @@ class User extends AppModel {
  * @access public
  */
 	public $belongsTo = array('Role');
-   var $hasOne = array('Profile');
+  var $hasOne = array('Profile');
+  public $hasMany = array(
+        'Education'
+   );
+  // var $hasAndBelongsToMany = array( 'Technology' => array( 'className' => 'Technology' ) );
+  public $hasAndBelongsToMany = array(
+		'Technology' => array(
+			'className' => 'Technology',
+			'joinTable' => 'technology_users',
+			'foreignKey' => 'user_id',
+			'associationForeignKey' => 'technology_id',
+		
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => '',
+		),
+		
+	); 
 /**
  * Validation
  *

@@ -37,7 +37,7 @@ class UsersController extends AppController {
  * @var array
  * @access public
  */
-	public $uses = array('User', 'Profile');
+	public $uses = array('User', 'Profile', 'Technology', 'TechnologyUser', 'Education');
 
 /**
  * beforeFilter
@@ -78,6 +78,12 @@ class UsersController extends AppController {
 				Cache::write($cacheName, (int)$cacheValue + 1, 'users_login');
 			}
 		}
+	}
+
+
+	public function blackhole($type) {
+    	if($type == 'auth')
+    		return true;
 	}
 
 /**
@@ -445,21 +451,29 @@ class UsersController extends AppController {
 		
 
 		if (!empty($this->request->data)) {
-			debug($this->request->data); 
+			// debug($this->request->data); // die;
+			$technologiesDesired = $this->request->data['TechnologyUsers'];
+			unset($this->request->data['TechnologyUsers']);
+			$languages = $this->request->data['UserWorldLanguages'];
+			unset($this->request->data['UserWorldLanguages']);
+			
+			
+			
 			$this->User->create();
 			$this->request->data['User']['activation_key'] = md5(uniqid());
-			$this->savePersonalInfo($this->User->id);
-			$this->request->data['User']['username'] = htmlspecialchars($this->request->data['User']['username']);
+			// $this->savePersonalInfo($this->User->id);
+			// $this->request->data['User']['username'] = htmlspecialchars($this->request->data['User']['username']);
 			$this->request->data['User']['status'] = 0;
 
 
 			if ($this->User->saveAll($this->request->data)) {
-				
 				$data = $this->request->data;
+
 				$data['user_id'] = $this->User->id;
-				// $this->User->Profile->save($data);
-				
+				$this->insertDesiredTech($data['user_id'], $technologiesDesired);
+				$this->insertLanguages($data['user_id'], $languages);
 				$this->request->data['User']['password'] = null;
+				// debug($data);// die;
 				/*
 				$this->Email->from = Configure::read('Site.title') . ' ' .
 					'<croogo@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>';
@@ -476,41 +490,39 @@ class UsersController extends AppController {
 				unset($this->request->data['User']['password']);
 			}
 		} 
-		$roles = $this->User->Role->find('list', array('conditions' => array('NOT' => array('Role.id' => array(1, 2, 3)))));
-		$this->set(compact('roles'));
+		
 		$this->set('deptoOptions',$this->getDepto());
 		$this->set('industryOptions',$this->getIndustry());
 		$this->set('academicLevelOptions',$this->getAcademicLevel());
 		$this->set('ocupationsOptions', $this->getOcupations());
 		$this->set('techCareersOptions', $this->getTechCareers()); 
+		$this->set('techCareersOptions2', $this->getTechCareers());
 		$this->set('languagesOptions', $this->getLanguages());
-
+		$this->set('technologiesOptions', $this->getTechnologies());	
 		
 	}
 
 	public function view($id) {
-		$user = $this->User->findById($id);
-		debug($user);
-		if (!isset($user['User']['id'])) {
-			$this->Session->setFlash(__('Invalid User.'), 'default', array('class' => 'error'));
-			$this->redirect('/');
-		}
-				$roles = $this->User->Role->find('list', array('conditions' => array('NOT' => array('Role.id' => array(1, 2, 3)))));
-		$this->set(compact('roles'));
-		$this->set('deptoOptions',$this->getDepto());
-		$this->set('industryOptions',$this->getIndustry());
-		$this->set('academicLevelOptions',$this->getAcademicLevel());
-		$this->set('ocupationsOptions', $this->getOcupations());
-		$this->set('techCareersOptions', $this->getTechCareers()); 
-		$this->set('languagesOptions', $this->getLanguages());
-	
-		$this->set('title_for_layout', $user['User']['name']);
-		$this->set(compact('user'));
-		$this->set('editFields', $this->User->editFields());
+		
 	}
 
+	function insertDesiredTech($user, $array){
+		foreach ($array['technology_id'] as $key => $value) {
+			$query = "INSERT INTO  technology_users (user_id, technology_id) 
+					VALUES ('".$user."', '".$value."')";
+			$res1 = $this->User->query($query);
+		}
 
+	}
 
+	function insertLanguages($user, $array){
+		foreach ($array['language_id'] as $key => $value) {
+			$query = "INSERT INTO  language_users (user_id, language_id) 
+					VALUES ('".$user."', '".$value."')";
+			$res1 = $this->User->query($query);
+		}
+
+	}
 	function getDepto($country = null){
 		$query = "SELECT * FROM  location_depto";
 		$res1 = $this->User->query($query);
@@ -584,7 +596,17 @@ class UsersController extends AppController {
 		return 	$res;	
 	}
 
+	function getTechnologies(){
+		$query = "SELECT * FROM  technologies";
+		$res1 = $this->User->query($query);
+		$res = array();
 
+		foreach ($res1 as $key => $value) {
+			$res[$value['technologies']['id']] = $value['technologies']['name']; 
+		}
+		
+		return 	$res;	
+	}
 
 
 }
