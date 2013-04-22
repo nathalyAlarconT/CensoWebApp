@@ -484,9 +484,9 @@ class UsersController extends AppController {
 				$this->Email->send();
 				*/
 				$this->Session->setFlash(__('Tus datos fueron registrados correctamente.'), 'default', array('class' => 'success'));
-				$this->redirect(array('action' => 'login'));
+				$this->redirect(array('action' => 'success'));
 			} else {
-				$this->Session->setFlash(__('NO SE PUDO GUARDAR EL USUARIO. INTENTE NUEVAMENTE.'), 'default', array('class' => 'error'));
+				$this->Session->setFlash(__('Error al guardar sus datos. Por favor, intente nuevamente.'), 'default', array('class' => 'error'));
 				unset($this->request->data['User']['password']);
 			}
 		} 
@@ -499,6 +499,10 @@ class UsersController extends AppController {
 		$this->set('techCareersOptions2', $this->getTechCareers());
 		$this->set('languagesOptions', $this->getLanguages());
 		$this->set('technologiesOptions', $this->getTechnologies());	
+		
+	}
+
+	public function success() {
 		
 	}
 
