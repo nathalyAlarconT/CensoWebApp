@@ -1,33 +1,39 @@
 <?php $this->extend('/Common/admin_edit'); 
 // $this->layout = 'ajax'
+	$this->layout = 'gdgbo';
 ?>
 <?php echo $this->Form->create('User');
 $username = ''; $password=''; 
 ?>
-<div class="mapsadminform">
 <fieldset>
 	
 		
 
 		<div id="user-main">
 		<?php
-			echo "<hr><h3>ACERCA DE MI</h3>";
+			echo "<h3>ACERCA DE MI</h3>";
 			// echo $this->Form->input('username', array('label' => 'Username')); 
 			echo $this->Form->input('Profile.first_name', array('label' => 'Nombre'));
 			echo $this->Form->input('Profile.last_name', array('label' => 'Apellido'));
 			
 			echo $this->Form->radio('Profile.gender', array('M' => 'Mujer', 'F' => 'Hombre'), array('legend' => 'Sexo', 'separator' => '<br> '));
 			
+			echo "<div class='input'>";
 			echo $this->Form->label('Departamento');
 			echo $this->Form->select('Profile.location_depto_id', $deptoOptions);
+			echo "</div>";
 			
+			echo "<div class='input'>";
 			echo $this->Form->label('Fecha de Nacimiento');
 			echo $this->Form->date('Profile.date_birth', array('label' => ''));
+			echo "</div>";
 			
+			echo "<div class='input'>";
 			echo $this->Form->label('Área en la que te desenvuelves');
 			echo $this->Form->select('Profile.industry_id', $industryOptions);
+			echo "</div>";
 		
-			echo "<hr><h3>ME CONTACTAS POR</h3>";	
+			echo "<h3>ME CONTACTAS POR</h3>";	
 			echo $this->Form->input('email');	
 			echo $this->Form->input('Profile.phone_number', array('label' => 'Tu celular'));
 			echo $this->Form->input('Profile.twitter_account', array('label' => 'Tu Twitter'));
@@ -42,35 +48,36 @@ $username = ''; $password='';
 			echo $this->Form->select('Profile.academic_level_id', $academicLevelOptions);
 			echo $this->Form->input('Profile.website_url', array('Mi portfolio (url)'));
 			
+			
 			echo $this->Form->label('Mi formación académica');
 			?>
-			<table border='1'> 
+			<!-- <table border='1'> 
 			<tr> <th>Intitución</th><th>Desde</th><th>Hasta</th>  </tr>
 				<tr>
-					<td>
+					<td> -->
 			<?php echo $this->Form->input('Education.0.school', array('label' => ''));
 		    ?>
-					</td> <td>
+					<!-- </td> <td> -->
 		    <?php  
 			echo $this->Form->date('Education.0.start_date', array('label' => ''));
 			 ?>
-					</td> <td>
+					<!-- </td> <td> -->
 		    <?php  
 			echo $this->Form->date('Education.0.end_date', array('label' => ''));
 			 ?>
-					</td></tr><tr> <td>
+					<!-- </td></tr><tr> <td> -->
 		    <?php  
 			echo $this->Form->input('Education.1.school', array('label' => ''));  
 			 ?>
-					</td> <td>
+					<!-- </td> <td> -->
 		    <?php  
 			echo $this->Form->date('Education.1.start_date', array('label' => ''));
 			 ?>
-					</td> <td>
+					<!-- </td> <td> -->
 		    <?php  
 			echo $this->Form->date('Education.1.end_date', array('label' => 'Hasa'));
  			?>
-					</td> </tr> </table>
+					<!-- </td> </tr> </table> -->
 		    <?php  
 
 			echo $this->Form->input('Profile.years_experience', array('label' => 'Años de experiencia'));

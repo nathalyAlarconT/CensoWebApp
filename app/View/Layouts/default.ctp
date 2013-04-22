@@ -34,6 +34,7 @@
 <body>
 	<div id="wrapper">
 		<div id="header" class="container_16">
+			<h2>Hi!</h2>
 			<div class="grid_16">
 				<h1 class="site-title"><?php echo $this->Html->link(Configure::read('Site.title'), '/'); ?></h1>
 				<span class="site-tagline"><?php echo Configure::read('Site.tagline'); ?></span>
