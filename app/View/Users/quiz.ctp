@@ -33,7 +33,7 @@ $username = ''; $password='';
 			echo $this->Form->select('Profile.industry_id', $industryOptions);
 			echo "</div>";
 		
-			echo "<h3>ME CONTACTAS POR</h3>";	
+			echo "<hr><h3>ME CONTACTAS POR</h3>";	
 			echo $this->Form->input('email');	
 			echo $this->Form->input('Profile.phone_number', array('label' => 'Tu celular'));
 			echo $this->Form->input('Profile.twitter_account', array('label' => 'Tu Twitter'));
@@ -44,87 +44,131 @@ $username = ''; $password='';
 			echo $this->Form->input('Profile.skype_account', array('label' => 'Tu Skype'));
 			
 			echo "<hr><h3>MI CV</h3>";
+			echo "<div class='input'>";
 			echo $this->Form->label('Tu Nivel Académico');
 			echo $this->Form->select('Profile.academic_level_id', $academicLevelOptions);
+			echo "</div>";
+			echo "<div class='input'>";
 			echo $this->Form->input('Profile.website_url', array('Mi portfolio (url)'));
 			
 			
 			echo $this->Form->label('Mi formación académica');
+			echo "</div>";
 			?>
-			<!-- <table border='1'> 
+			<fieldset class="full">
+			<table border='0'> 
 			<tr> <th>Intitución</th><th>Desde</th><th>Hasta</th>  </tr>
 				<tr>
-					<td> -->
-			<?php echo $this->Form->input('Education.0.school', array('label' => ''));
+					<td>
+			<?php echo $this->Form->input('Education.0.school', array('label' => '', 'div' => false));
 		    ?>
-					<!-- </td> <td> -->
+					</td> <td>
 		    <?php  
-			echo $this->Form->date('Education.0.start_date', array('label' => ''));
+			echo $this->Form->date('Education.0.start_date', array('label' => '', 'div' => false));
 			 ?>
-					<!-- </td> <td> -->
+					</td> <td>
 		    <?php  
-			echo $this->Form->date('Education.0.end_date', array('label' => ''));
+			echo $this->Form->date('Education.0.end_date', array('label' => '', 'div' => false));
 			 ?>
-					<!-- </td></tr><tr> <td> -->
+					</td></tr><tr> <td>
 		    <?php  
-			echo $this->Form->input('Education.1.school', array('label' => ''));  
+			echo $this->Form->input('Education.1.school', array('label' => '', 'div' => false));  
 			 ?>
-					<!-- </td> <td> -->
+					</td> <td>
 		    <?php  
-			echo $this->Form->date('Education.1.start_date', array('label' => ''));
+			echo $this->Form->date('Education.1.start_date', array('label' => '', 'div' => false));
 			 ?>
-					<!-- </td> <td> -->
+					</td> <td>
 		    <?php  
-			echo $this->Form->date('Education.1.end_date', array('label' => 'Hasa'));
+			echo $this->Form->date('Education.1.end_date', array('label' => 'Hasta', 'div' => false));
  			?>
-					<!-- </td> </tr> </table> -->
+					</td> </tr> </table></fieldset>
 		    <?php  
 
 			echo $this->Form->input('Profile.years_experience', array('label' => 'Años de experiencia'));
-			echo $this->Form->label('A que te dedicas');	
 
+			echo "<div class='input'>";
+			echo $this->Form->label('A que te dedicas');	
 			echo $this->Form->select('Profile.ocupation_id', $ocupationsOptions);
+			echo "</div>";
 
 		    echo $this->Form->input('Profile.company', array('label' => 'Mi trabajo actual'));
 
-
+			echo "<div class='input'>";
 		    echo $this->Form->label('Te desempeñas como');	
 			echo $this->Form->select('Profile.current_career', $techCareersOptions);//, array('multiple' => true));
-			
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Idiomas');	
-			
+			echo "<fieldset>";
 			echo $this->Form->select('UserWorldLanguages.language_id', $languagesOptions, array('multiple' => 'checkbox'));
-			
+			echo "</fieldset>";
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Quisiera desempeñarme como');	
 			echo $this->Form->select('Profile.future_career', $techCareersOptions2); 
-			
+			echo "</div>";
 
 			echo "<hr><h3>Mi opinion como Mujer en tech</h3>";	
 			
 			echo $this->Form->radio('Profile.have_kids', array('1' => 'Si', '0' => 'No'), array('legend' => 'Tienes hijos?', 'separator' => '<br> '));
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Cómo balanceas tu trabajo con tu vida personal?');
 			echo $this->Form->textarea('Profile.work_life_balance');
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Cómo decidiste ingresar en una carrera tecnológica?');
 			echo $this->Form->textarea('Profile.pursue_career');
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Cuál fue el reto más grande al que te enfrentaste en tu carrera tecnológica?');
 			echo $this->Form->textarea('Profile.greatest_challenge');
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Cómo mantienes actualizados tus conocimientos tecnológicos?');
 			echo $this->Form->textarea('Profile.stay_current');
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Cúales crees que son las barreras a las que se enfrentan las mujeres en tecnología?');
 			echo $this->Form->textarea('Profile.woman_barriers');
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Cuáles piensas que son las limitaciones en Bolivia que impiden el progreso tecnológico?');
 			echo $this->Form->textarea('Profile.bolivian_limits');
+			echo "</div>";
 			
 			echo "<hr><h3>Capacitación</h3>";
 				// si pudieras tomar un curso de capacitacion q tipo de cursos te interesaria mas?
-			echo $this->Form->label('Qué tecnologías quisieras aprender?');	
+
+			echo "<div class='input'>";
+			echo $this->Form->label('Qué tecnologías quisieras aprender?');
+			echo "<fieldset>";
 			echo $this->Form->select('TechnologyUsers.technology_id', $technologiesOptions, array('multiple' => 'checkbox'));
+			echo "</fieldset>";
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('Que dias preferirias tomar el curso?');
-			echo $this->Form->select('Profile.training_days', array('lun-vie' => 'Días Laborales', 'sab-dom' => 'Fines de Semana'));	
+			echo $this->Form->select('Profile.training_days', array('lun-vie' => 'Días Laborales', 'sab-dom' => 'Fines de Semana'));
+			echo "</div>";
+
+			echo "<div class='input'>";	
 			echo $this->Form->label('Con qué frecuencia?');
 			echo $this->Form->select('Profile.training_frequency', array('1v' => '1 vez a la semana', '2v' => '2 veces a la semana', '3v' => '3 veces a la semana'));
+			echo "</div>";
+
+			echo "<div class='input'>";
 			echo $this->Form->label('En qué horario?');
-			echo $this->Form->select('Profile.training_time', array('manana' => 'En la maniana', 'tarde' => 'En la tarde', 'noche' => 'En la noche (a partir de las 7pm)'));
+			echo $this->Form->select('Profile.training_time', array('manana' => 'En la mañana', 'tarde' => 'En la tarde', 'noche' => 'En la noche (a partir de las 7pm)'));
+			echo "</div>";
 			
 		?>
 		</div>
